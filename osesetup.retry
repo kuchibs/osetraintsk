@@ -1,6 +1,3 @@
-[test]
-osetrain-i9159
-[ose]
 osetrain-i9159
 osetrain-i9160
 osetrain-i9161
@@ -36,13 +33,3 @@ osetrain-i9190
 osetrain-i9191
 osetrain-i9192
 osetrain-i9193
-
-[loadbalancer]
-kucsa02-i9022
-[db]
-kucsa02-i9021
-[webserver]
-kucsa02-i7866
-kucsa02-i9051
-[controller]
-kucsa02-i9023 ansible_connection=local
