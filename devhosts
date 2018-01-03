@@ -1,0 +1,9 @@
+[loadbalancer]
+kucsa02-i9022
+[db]
+kucsa02-i9021
+[webserver]
+kucsa02-i7866
+kucsa02-i9051
+[controller]
+kucsa02-i9023 ansible_connection=local
