@@ -1,0 +1,12 @@
+---
+- hosts: kucsa02-I9146
+  tasks: 
+   - name: Check if oc is installed, if not, install
+     stat: path='/usr/local/bin/oc'
+     register: sym
+   - debug:
+       msg: "islnk isn't defined (path doesn't exist)"
+     when: sym.stat.islnk is not defined
+
+
+
