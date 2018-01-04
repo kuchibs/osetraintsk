@@ -11,13 +11,6 @@
            dest: /root
            owner: root
            mode: 0744
-      #- name: Execute script to add INSECURE_REGISTRY to sysconfig docker file
-      #  script: oseinstall1.sh >> logfile.log
-      #  notify: restart docker
-
-      #- name: fake task to delete
-      #  command: hostname
-      #  notify: restart docker
 
       - name: Insert docker INSECURE_REG line
         lineinfile: 
@@ -38,8 +31,42 @@
       #- name: Execute script to install oc cluster and change the working directory to scripts/ before executing the command.
       #  script: oseinstall.sh >> logfile.log
 
-      #- name: oc cluster up
-      #  script: oc cluster up
+      
+      - name: Check if oc is installed, if not, install
+        stat: path='/usr/local/bin/oc'
+        register: sym
+      
+      - debug: msgi="islnk isn't defined (path doesn't exist)"
+        when: sym.stat.islnk is not defined
+      
+      #- name: install ose when sym link is not defined
+      - name: Create a folder in tmp
+        file: path=/tmp/1sarvani state=directory
+        when: sym.stat.islink is not defined
+
+      - name: wget the oc install
+        get_url:
+            url: https://github.com/openshift/origin/releases/download/v1.5.0/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz
+            dest: /tmp/1sarvani
+        when: sym.stat.islink is not defined
+
+      - name: tar - unzip the oc tar
+        unarchive:
+            src:  /tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz
+            dest: /tmp/1sarvani
+            remote_src: yes
+        when: sym.stat.islink is not defined
+
+      - name: Move to usr local bin
+        shell: cp -r /tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit/ /usr/local/bin/
+        when: sym.stat.islink is not defined
+ 
+      - name: oc cluster up
+        script: oc cluster up
+      
+      
+      
+      
   handlers:
    - name: restart docker
      service: name=docker state=restarted      #http://docs.ansible.com/ansible/latest/apache2_module_module.html
