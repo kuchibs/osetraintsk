@@ -11,10 +11,7 @@ do
 done
 END
 
-#while read file SERVER PASSWORD
-#while read file PASSWORD SERVER
-
-while read file PASSWORD SERVER XYZ
+while read -r file PASSWORD SERVER XYZ
 do
    
    echo "p:"$PASSWORD "s"$SERVER "cmd:"$cmd "file:"$file
@@ -26,11 +23,3 @@ do
 
 done <./server.txt
 
-   #chmod 644 filename>>filename
-   #cat id_rsa.pub >> ~/.ssh/authorized_keys
-
-
-   #cat ~/.ssh/id_rsa.pub | ssh root@"$SERVER" "mkdir /root/.ssh;cat >> /root/.ssh/id_rsa.pub"
-
-  #sshpass -p "interOP@9159" scp file.txt "osetrain-i9159":/root/.ssh/id_rsa_9023Control.pub
-  # scp .ssh/id_rsa.pub root@kucsa02-i9021:/root/.ssh/id_rsa_9023Control.pub
