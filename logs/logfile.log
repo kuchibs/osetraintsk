@@ -4265,3 +4265,997 @@ exception: mapping values are not allowed in this context
 2018-01-03 07:43:44,341 p=14445 u=root |  osetrain-i9191             : ok=2    changed=1    unreachable=0    failed=0   
 2018-01-03 07:43:44,341 p=14445 u=root |  osetrain-i9192             : ok=2    changed=1    unreachable=0    failed=0   
 2018-01-03 07:43:44,341 p=14445 u=root |  osetrain-i9193             : ok=2    changed=1    unreachable=0    failed=0   
+2018-01-03 23:33:33,792 p=15045 u=root |  playbook: ose-copy-command.yml
+2018-01-03 23:33:56,258 p=15075 u=root |  PLAY [test] **************************************************************************************************************************************************************************************
+2018-01-03 23:33:56,700 p=15075 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-03 23:34:01,609 p=15075 u=root |  ok: [osetrain-i9192]
+2018-01-03 23:34:01,623 p=15075 u=root |  TASK [package epel-release upgrade] **************************************************************************************************************************************************************
+2018-01-03 23:34:02,650 p=15075 u=root |  ok: [osetrain-i9192]
+2018-01-03 23:34:02,659 p=15075 u=root |  TASK [Install docker] ****************************************************************************************************************************************************************************
+2018-01-03 23:34:03,339 p=15075 u=root |  ok: [osetrain-i9192]
+2018-01-03 23:34:03,358 p=15075 u=root |  TASK [Copy script file] **************************************************************************************************************************************************************************
+2018-01-03 23:34:05,084 p=15075 u=root |  ok: [osetrain-i9192]
+2018-01-03 23:34:05,087 p=15075 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-03 23:34:05,087 p=15075 u=root |  osetrain-i9192             : ok=4    changed=0    unreachable=0    failed=0   
+2018-01-03 23:57:30,959 p=16795 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 26, column 37, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+          insertafter: EOF
+          line: 'INSECURE_REGISTRY='--insecure-registry 172.30.0.0/16'
+                                    ^ here
+We could be wrong, but this one looks like it might be an issue with
+unbalanced quotes.  If starting a value with a quote, make sure the
+line ends with the same set of quotes.  For instance this arbitrary
+example:
+
+    foo: "bad" "wolf"
+
+Could be written as:
+
+    foo: '"bad" "wolf"'
+
+exception type: <class 'yaml.parser.ParserError'>
+exception: while parsing a block mapping
+  in "<unicode string>", line 24, column 11
+did not find expected key
+  in "<unicode string>", line 26, column 37
+2018-01-03 23:58:11,641 p=16896 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 40, column 19, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      - name: oc cluster up
+            script: oc cluster up
+                  ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 40, column 19
+2018-01-03 23:58:37,985 p=16924 u=root |  playbook: osesetup.yml
+2018-01-04 00:00:27,253 p=17099 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 28, column 11, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+          state=present
+          notify: restart docker
+          ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: while scanning a simple key
+  in "<unicode string>", line 27, column 11
+could not find expected ':'
+  in "<unicode string>", line 28, column 11
+2018-01-04 00:01:15,077 p=17179 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 24, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        lineinfile: state=present
+          path: /etc/sysconfig/docker
+              ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 24, column 15
+2018-01-04 00:02:27,308 p=17322 u=root |  playbook: osesetup.yml
+2018-01-04 00:02:32,641 p=17334 u=root |  PLAY [test] ********************************************************************
+2018-01-04 00:02:32,674 p=17334 u=root |  TASK [Gathering Facts] *********************************************************
+2018-01-04 00:02:33,561 p=17334 u=root |   [ERROR]: User interrupted execution
+
+2018-01-04 00:03:13,143 p=17861 u=root |  PLAY [test] **************************************************************************************************************************************************************************************
+2018-01-04 00:03:13,175 p=17861 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 00:03:15,292 p=17861 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:03:15,299 p=17861 u=root |  TASK [package epel-release upgrade] **************************************************************************************************************************************************************
+2018-01-04 00:03:16,261 p=17861 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:03:16,269 p=17861 u=root |  TASK [Install docker] ****************************************************************************************************************************************************************************
+2018-01-04 00:03:16,929 p=17861 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:03:16,937 p=17861 u=root |  TASK [Copy script file] **************************************************************************************************************************************************************************
+2018-01-04 00:03:18,403 p=17861 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:03:18,411 p=17861 u=root |  TASK [Insert docker INSECURE_REG line] ***********************************************************************************************************************************************************
+2018-01-04 00:03:19,054 p=17861 u=root |  fatal: [osetrain-i9192]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (lineinfile) module: notify Supported parameters include: attributes,backrefs,backup,content,create,delimiter,directory_mode,follow,force,group,insertafter,insertbefore,line,mode,owner,path,regexp,remote_src,selevel,serole,setype,seuser,src,state,unsafe_writes,validate"}
+2018-01-04 00:03:19,057 p=17861 u=root |  	to retry, use: --limit @/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.retry
+
+2018-01-04 00:03:19,057 p=17861 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 00:03:19,057 p=17861 u=root |  osetrain-i9192             : ok=4    changed=0    unreachable=0    failed=1   
+2018-01-04 00:04:04,487 p=17967 u=root |  ansible-playbook 2.4.2.0
+  config file = /root/1sarvani/git-repos/ansible/osetraintsk/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 2.7.5 (default, Aug  4 2017, 00:39:18) [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]
+2018-01-04 00:04:04,487 p=17967 u=root |  Using /root/1sarvani/git-repos/ansible/osetraintsk/ansible.cfg as config file
+2018-01-04 00:04:04,499 p=17967 u=root |  Parsed /root/1sarvani/git-repos/ansible/osetraintsk/devhosts inventory source with ini plugin
+2018-01-04 00:04:04,732 p=17967 u=root |  PLAYBOOK: osesetup.yml ***************************************************************************************************************************************************************************
+2018-01-04 00:04:04,732 p=17967 u=root |  1 plays in osesetup.yml
+2018-01-04 00:04:04,771 p=17967 u=root |  PLAY [test] **************************************************************************************************************************************************************************************
+2018-01-04 00:04:04,801 p=17967 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 00:04:05,190 p=17967 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2018-01-04 00:04:06,105 p=17967 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:04:06,106 p=17967 u=root |  META: ran handlers
+2018-01-04 00:04:06,113 p=17967 u=root |  TASK [package epel-release upgrade] **************************************************************************************************************************************************************
+2018-01-04 00:04:06,113 p=17967 u=root |  task path: /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml:4
+2018-01-04 00:04:06,369 p=17967 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/packaging/os/yum.py
+2018-01-04 00:04:07,072 p=17967 u=root |  ok: [osetrain-i9192] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "allow_downgrade": false, 
+            "conf_file": null, 
+            "disable_gpg_check": false, 
+            "disablerepo": null, 
+            "enablerepo": null, 
+            "exclude": null, 
+            "install_repoquery": true, 
+            "installroot": "/", 
+            "list": null, 
+            "name": [
+                "epel-release"
+            ], 
+            "security": false, 
+            "skip_broken": false, 
+            "state": "installed", 
+            "update_cache": false, 
+            "validate_certs": true
+        }
+    }, 
+    "msg": "", 
+    "rc": 0, 
+    "results": [
+        "epel-release-7-9.noarch providing epel-release is already installed"
+    ]
+}
+2018-01-04 00:04:07,084 p=17967 u=root |  TASK [Install docker] ****************************************************************************************************************************************************************************
+2018-01-04 00:04:07,084 p=17967 u=root |  task path: /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml:6
+2018-01-04 00:04:07,118 p=17967 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/packaging/os/yum.py
+2018-01-04 00:04:07,843 p=17967 u=root |  ok: [osetrain-i9192] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "allow_downgrade": false, 
+            "conf_file": null, 
+            "disable_gpg_check": false, 
+            "disablerepo": null, 
+            "enablerepo": null, 
+            "exclude": null, 
+            "install_repoquery": true, 
+            "installroot": "/", 
+            "list": null, 
+            "name": [
+                "docker"
+            ], 
+            "security": false, 
+            "skip_broken": false, 
+            "state": "present", 
+            "update_cache": false, 
+            "validate_certs": true
+        }
+    }, 
+    "msg": "", 
+    "rc": 0, 
+    "results": [
+        "2:docker-1.12.6-68.gitec8512b.el7.centos.x86_64 providing docker is already installed"
+    ]
+}
+2018-01-04 00:04:07,851 p=17967 u=root |  TASK [Copy script file] **************************************************************************************************************************************************************************
+2018-01-04 00:04:07,851 p=17967 u=root |  task path: /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml:8
+2018-01-04 00:04:08,165 p=17967 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/stat.py
+2018-01-04 00:04:08,574 p=17967 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/stat.py
+2018-01-04 00:04:09,066 p=17967 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/file.py
+2018-01-04 00:04:09,463 p=17967 u=root |  ok: [osetrain-i9192] => {
+    "changed": false, 
+    "checksum": "7321ae7406a8ee858ce078ee4e207dd66d004e1f", 
+    "diff": {
+        "after": {
+            "path": "/root/oseinstall1.sh"
+        }, 
+        "before": {
+            "path": "/root/oseinstall1.sh"
+        }
+    }, 
+    "gid": 0, 
+    "group": "root", 
+    "invocation": {
+        "module_args": {
+            "attributes": null, 
+            "backup": null, 
+            "content": null, 
+            "delimiter": null, 
+            "dest": "/root", 
+            "diff_peek": null, 
+            "directory_mode": null, 
+            "follow": false, 
+            "force": false, 
+            "group": null, 
+            "mode": 484, 
+            "original_basename": "oseinstall1.sh", 
+            "owner": "root", 
+            "path": "/root/oseinstall1.sh", 
+            "recurse": false, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": "oseinstall1.sh", 
+            "state": "file", 
+            "unsafe_writes": null, 
+            "validate": null
+        }
+    }, 
+    "mode": "0744", 
+    "owner": "root", 
+    "path": "/root/oseinstall1.sh", 
+    "secontext": "system_u:object_r:admin_home_t:s0", 
+    "size": 107, 
+    "state": "file", 
+    "uid": 0
+}
+2018-01-04 00:04:09,470 p=17967 u=root |  TASK [Insert docker INSECURE_REG line] ***********************************************************************************************************************************************************
+2018-01-04 00:04:09,470 p=17967 u=root |  task path: /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml:22
+2018-01-04 00:04:09,667 p=17967 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/lineinfile.py
+2018-01-04 00:04:10,154 p=17967 u=root |  fatal: [osetrain-i9192]: FAILED! => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "insertafter": "EOF", 
+            "line": "INSECURE_REGISTRY='--insecure-registry 172.30.0.0/16'", 
+            "notify": "restart docker", 
+            "path": "/etc/sysconfig/docker", 
+            "state": "present"
+        }
+    }, 
+    "msg": "Unsupported parameters for (lineinfile) module: notify Supported parameters include: attributes,backrefs,backup,content,create,delimiter,directory_mode,follow,force,group,insertafter,insertbefore,line,mode,owner,path,regexp,remote_src,selevel,serole,setype,seuser,src,state,unsafe_writes,validate"
+}
+2018-01-04 00:04:10,156 p=17967 u=root |  	to retry, use: --limit @/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.retry
+
+2018-01-04 00:04:10,156 p=17967 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 00:04:10,156 p=17967 u=root |  osetrain-i9192             : ok=4    changed=0    unreachable=0    failed=1   
+2018-01-04 00:07:16,202 p=18217 u=root |  PLAY [test] **************************************************************************************************************************************************************************************
+2018-01-04 00:07:16,236 p=18217 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 00:07:18,277 p=18217 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:07:18,286 p=18217 u=root |  TASK [package epel-release upgrade] **************************************************************************************************************************************************************
+2018-01-04 00:07:19,161 p=18217 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:07:19,171 p=18217 u=root |  TASK [Install docker] ****************************************************************************************************************************************************************************
+2018-01-04 00:07:19,870 p=18217 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:07:19,878 p=18217 u=root |  TASK [Copy script file] **************************************************************************************************************************************************************************
+2018-01-04 00:07:21,388 p=18217 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:07:21,395 p=18217 u=root |  TASK [Insert docker INSECURE_REG line] ***********************************************************************************************************************************************************
+2018-01-04 00:07:22,023 p=18217 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:07:22,031 p=18217 u=root |  TASK [Enable and start docker] *******************************************************************************************************************************************************************
+2018-01-04 00:07:22,672 p=18217 u=root |  ok: [osetrain-i9192]
+2018-01-04 00:07:22,673 p=18217 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 00:07:22,673 p=18217 u=root |  osetrain-i9192             : ok=6    changed=0    unreachable=0    failed=0   
+2018-01-04 01:10:55,220 p=22744 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 5, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+   - name: Check if oc is installed, if not, install
+        - stat:
+              ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 5, column 15
+2018-01-04 01:11:33,874 p=22790 u=root |  ERROR! 'host' is not a valid attribute for a Play
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 2, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+- host: test
+  ^ here
+
+2018-01-04 01:11:49,086 p=22810 u=root |  ERROR! 'task' is not a valid attribute for a Play
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 2, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+- hosts: test
+  ^ here
+
+2018-01-04 01:12:54,843 p=22892 u=root |  ERROR! conflicting action statements: debug, stat
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 4, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+   - name: Check if oc is installed, if not, install
+     ^ here
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 4, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+   - name: Check if oc is installed, if not, install
+     ^ here
+
+exception type: <class 'ansible.errors.AnsibleParserError'>
+exception: conflicting action statements: debug, stat
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 4, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+   - name: Check if oc is installed, if not, install
+     ^ here
+
+2018-01-04 01:14:04,626 p=22966 u=root |  ERROR! conflicting action statements: debug, stat
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 4, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+   - name: Check if oc is installed, if not, install
+     ^ here
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 4, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+   - name: Check if oc is installed, if not, install
+     ^ here
+
+exception type: <class 'ansible.errors.AnsibleParserError'>
+exception: conflicting action statements: debug, stat
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.yml': line 4, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+   - name: Check if oc is installed, if not, install
+     ^ here
+
+2018-01-04 01:15:29,024 p=23060 u=root |  playbook: ose-isfolder-present.yml
+2018-01-04 01:15:36,738 p=23074 u=root |  PLAY [test] ********************************************************************
+2018-01-04 01:15:36,775 p=23074 u=root |  TASK [Gathering Facts] *********************************************************
+2018-01-04 01:15:38,522 p=23074 u=root |  ok: [osetrain-i9192]
+2018-01-04 01:15:38,530 p=23074 u=root |  TASK [Check if oc is installed, if not, install] *******************************
+2018-01-04 01:15:39,674 p=23074 u=root |  ok: [osetrain-i9192]
+2018-01-04 01:15:39,722 p=23074 u=root |  TASK [debug] *******************************************************************
+2018-01-04 01:15:39,743 p=23074 u=root |  skipping: [osetrain-i9192]
+2018-01-04 01:15:39,746 p=23074 u=root |  PLAY RECAP *********************************************************************
+2018-01-04 01:15:39,746 p=23074 u=root |  osetrain-i9192             : ok=2    changed=0    unreachable=0    failed=0   
+2018-01-04 01:23:12,314 p=23583 u=root |   [WARNING]: Could not match supplied host pattern, ignoring: kucsa02-I9146
+
+2018-01-04 01:23:12,315 p=23583 u=root |  PLAY [kucsa02-I9146] *****************************************************************************************************************************************************************************
+2018-01-04 01:23:12,315 p=23583 u=root |  skipping: no hosts matched
+2018-01-04 01:23:12,315 p=23583 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 01:23:36,441 p=23627 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 01:23:36,763 p=23627 u=root |  PLAY [kucsa02-I9146] *****************************************************************************************************************************************************************************
+2018-01-04 01:23:36,796 p=23627 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 01:23:55,038 p=23627 u=root |  fatal: [kucsa02-I9146]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added 'kucsa02-i9146,10.131.138.52' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey,gssapi-keyex,gssapi-with-mic,password).\r\n", "unreachable": true}
+2018-01-04 01:23:55,042 p=23627 u=root |  	to retry, use: --limit @/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.retry
+
+2018-01-04 01:23:55,042 p=23627 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 01:23:55,043 p=23627 u=root |  kucsa02-I9146              : ok=0    changed=0    unreachable=1    failed=0   
+2018-01-04 01:24:07,760 p=23667 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 01:24:08,097 p=23667 u=root |  PLAY [kucsa02-I9146] *****************************************************************************************************************************************************************************
+2018-01-04 01:24:08,136 p=23667 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 01:24:08,736 p=23667 u=root |  fatal: [kucsa02-I9146]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).\r\n", "unreachable": true}
+2018-01-04 01:24:08,739 p=23667 u=root |  	to retry, use: --limit @/root/1sarvani/git-repos/ansible/osetraintsk/ose-isfolder-present.retry
+
+2018-01-04 01:24:08,739 p=23667 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 01:24:08,739 p=23667 u=root |  kucsa02-I9146              : ok=0    changed=0    unreachable=1    failed=0   
+2018-01-04 01:25:28,611 p=23842 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 01:25:29,099 p=23842 u=root |  PLAY [kucsa02-I9146] *****************************************************************************************************************************************************************************
+2018-01-04 01:25:29,130 p=23842 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 01:25:31,710 p=23842 u=root |  ok: [kucsa02-I9146]
+2018-01-04 01:25:31,717 p=23842 u=root |  TASK [Check if oc is installed, if not, install] *************************************************************************************************************************************************
+2018-01-04 01:25:32,386 p=23842 u=root |  ok: [kucsa02-I9146]
+2018-01-04 01:25:32,395 p=23842 u=root |  TASK [debug] *************************************************************************************************************************************************************************************
+2018-01-04 01:25:32,438 p=23842 u=root |  ok: [kucsa02-I9146] => {
+    "msg": "islnk isn't defined (path doesn't exist)"
+}
+2018-01-04 01:25:32,439 p=23842 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 01:25:32,440 p=23842 u=root |  kucsa02-I9146              : ok=3    changed=0    unreachable=0    failed=0   
+2018-01-04 01:48:54,863 p=25558 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 01:48:55,033 p=25558 u=root |  ERROR! the field 'hosts' is required but was not set
+2018-01-04 01:49:55,664 p=25630 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 01:49:55,893 p=25630 u=root |   [WARNING]: Could not match supplied host pattern, ignoring: kucsa02-i9146
+
+2018-01-04 01:49:55,894 p=25630 u=root |  playbook: ose-folder-wget-tar-mv.yaml
+2018-01-04 01:50:15,195 p=25667 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 01:50:15,503 p=25667 u=root |   [WARNING]: Could not match supplied host pattern, ignoring: kucsa02-i9146
+
+2018-01-04 01:50:15,504 p=25667 u=root |  PLAY [kucsa02-i9146] *****************************************************************************************************************************************************************************
+2018-01-04 01:50:15,504 p=25667 u=root |  skipping: no hosts matched
+2018-01-04 01:50:15,504 p=25667 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 01:50:53,003 p=25717 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 01:50:53,300 p=25717 u=root |  PLAY [kucsa02-I9146] *****************************************************************************************************************************************************************************
+2018-01-04 01:50:53,332 p=25717 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 01:51:00,036 p=25717 u=root |  ok: [kucsa02-I9146]
+2018-01-04 01:51:00,042 p=25717 u=root |  TASK [Create a folder in /tmp] *******************************************************************************************************************************************************************
+2018-01-04 01:51:00,858 p=25717 u=root |  changed: [kucsa02-I9146]
+2018-01-04 01:51:00,869 p=25717 u=root |  TASK [wget the oc install] ***********************************************************************************************************************************************************************
+2018-01-04 01:51:59,744 p=25717 u=root |  changed: [kucsa02-I9146]
+2018-01-04 01:51:59,757 p=25717 u=root |  TASK [tar - unzip the oc tar] ********************************************************************************************************************************************************************
+2018-01-04 01:51:59,973 p=25717 u=root |  fatal: [kucsa02-I9146]: FAILED! => {"changed": false, "msg": "Could not find or access '/tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz'"}
+2018-01-04 01:51:59,974 p=25717 u=root |  	to retry, use: --limit @/root/1sarvani/git-repos/ansible/osetraintsk/ose-folder-wget-tar-mv.retry
+
+2018-01-04 01:51:59,975 p=25717 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 01:51:59,975 p=25717 u=root |  kucsa02-I9146              : ok=3    changed=2    unreachable=0    failed=1   
+2018-01-04 01:56:06,556 p=26113 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 01:56:06,862 p=26113 u=root |  PLAY [kucsa02-I9146] ***********************************************************
+2018-01-04 01:56:06,897 p=26113 u=root |  TASK [Gathering Facts] *********************************************************
+2018-01-04 01:56:08,468 p=26113 u=root |  ok: [kucsa02-I9146]
+2018-01-04 01:56:08,475 p=26113 u=root |  TASK [Create a folder in /tmp] *************************************************
+2018-01-04 01:56:09,138 p=26113 u=root |  ok: [kucsa02-I9146]
+2018-01-04 01:56:09,148 p=26113 u=root |  TASK [wget the oc install] *****************************************************
+2018-01-04 01:56:37,307 p=26113 u=root |  ok: [kucsa02-I9146]
+2018-01-04 01:56:37,316 p=26113 u=root |  TASK [tar - unzip the oc tar] **************************************************
+2018-01-04 01:56:37,542 p=26113 u=root |  fatal: [kucsa02-I9146]: FAILED! => {"changed": false, "msg": "Could not find or access '/tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz'"}
+2018-01-04 01:56:37,544 p=26113 u=root |  	to retry, use: --limit @/root/1sarvani/git-repos/ansible/osetraintsk/ose-folder-wget-tar-mv.retry
+
+2018-01-04 01:56:37,544 p=26113 u=root |  PLAY RECAP *********************************************************************
+2018-01-04 01:56:37,545 p=26113 u=root |  kucsa02-I9146              : ok=3    changed=0    unreachable=0    failed=1   
+2018-01-04 02:08:35,924 p=27000 u=root |  ansible-playbook 2.4.2.0
+  config file = /root/1sarvani/git-repos/ansible/osetraintsk/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 2.7.5 (default, Aug  4 2017, 00:39:18) [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]
+2018-01-04 02:08:35,924 p=27000 u=root |  Using /root/1sarvani/git-repos/ansible/osetraintsk/ansible.cfg as config file
+2018-01-04 02:08:35,939 p=27000 u=root |  Parsed /root/1sarvani/git-repos/ansible/osetraintsk/devhosts inventory source with ini plugin
+2018-01-04 02:08:35,940 p=27000 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:08:38,125 p=27000 u=root |  PLAYBOOK: ose-folder-wget-tar-mv.yaml ************************************************************************************************************************************************************
+2018-01-04 02:08:38,125 p=27000 u=root |  1 plays in ose-folder-wget-tar-mv.yaml
+2018-01-04 02:08:38,184 p=27000 u=root |  PLAY [kucsa02-I9146] *****************************************************************************************************************************************************************************
+2018-01-04 02:08:38,235 p=27000 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 02:08:38,615 p=27000 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2018-01-04 02:08:44,847 p=27000 u=root |  ok: [kucsa02-I9146]
+2018-01-04 02:08:44,848 p=27000 u=root |  META: ran handlers
+2018-01-04 02:08:44,854 p=27000 u=root |  TASK [Create a folder in /tmp] *******************************************************************************************************************************************************************
+2018-01-04 02:08:44,854 p=27000 u=root |  task path: /root/1sarvani/git-repos/ansible/osetraintsk/ose-folder-wget-tar-mv.yaml:4
+2018-01-04 02:08:45,072 p=27000 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/file.py
+2018-01-04 02:08:45,544 p=27000 u=root |  ok: [kucsa02-I9146] => {
+    "changed": false, 
+    "diff": {
+        "after": {
+            "path": "/tmp/1sarvani"
+        }, 
+        "before": {
+            "path": "/tmp/1sarvani"
+        }
+    }, 
+    "gid": 0, 
+    "group": "root", 
+    "invocation": {
+        "module_args": {
+            "attributes": null, 
+            "backup": null, 
+            "content": null, 
+            "delimiter": null, 
+            "diff_peek": null, 
+            "directory_mode": null, 
+            "follow": false, 
+            "force": false, 
+            "group": null, 
+            "mode": null, 
+            "original_basename": null, 
+            "owner": null, 
+            "path": "/tmp/1sarvani", 
+            "recurse": false, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": null, 
+            "state": "directory", 
+            "unsafe_writes": null, 
+            "validate": null
+        }
+    }, 
+    "mode": "0755", 
+    "owner": "root", 
+    "path": "/tmp/1sarvani", 
+    "secontext": "unconfined_u:object_r:user_tmp_t:s0", 
+    "size": 76, 
+    "state": "directory", 
+    "uid": 0
+}
+2018-01-04 02:08:45,552 p=27000 u=root |  TASK [wget the oc install] ***********************************************************************************************************************************************************************
+2018-01-04 02:08:45,552 p=27000 u=root |  task path: /root/1sarvani/git-repos/ansible/osetraintsk/ose-folder-wget-tar-mv.yaml:7
+2018-01-04 02:08:45,763 p=27000 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/net_tools/basics/get_url.py
+2018-01-04 02:09:28,190 p=27000 u=root |  ok: [kucsa02-I9146] => {
+    "changed": false, 
+    "checksum_dest": "9d067b03a7d178fec763bec6b0aeee3a2272c67a", 
+    "checksum_src": "9d067b03a7d178fec763bec6b0aeee3a2272c67a", 
+    "dest": "/tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz", 
+    "gid": 0, 
+    "group": "root", 
+    "invocation": {
+        "module_args": {
+            "attributes": null, 
+            "backup": null, 
+            "checksum": "", 
+            "client_cert": null, 
+            "client_key": null, 
+            "content": null, 
+            "delimiter": null, 
+            "dest": "/tmp/1sarvani", 
+            "directory_mode": null, 
+            "follow": false, 
+            "force": false, 
+            "force_basic_auth": false, 
+            "group": null, 
+            "headers": null, 
+            "http_agent": "ansible-httpget", 
+            "mode": null, 
+            "owner": null, 
+            "path": "/tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz", 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "sha256sum": "", 
+            "src": null, 
+            "timeout": 10, 
+            "tmp_dest": null, 
+            "unsafe_writes": null, 
+            "url": "https://github.com/openshift/origin/releases/download/v1.5.0/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz", 
+            "url_password": null, 
+            "url_username": null, 
+            "use_proxy": true, 
+            "validate_certs": true
+        }
+    }, 
+    "md5sum": "7fde24b9f6ac04e78fc13387647a611d", 
+    "mode": "0644", 
+    "msg": "OK (20930287 bytes)", 
+    "owner": "root", 
+    "secontext": "unconfined_u:object_r:user_tmp_t:s0", 
+    "size": 20930287, 
+    "src": "/tmp/tmp8eEZAJ", 
+    "state": "file", 
+    "status_code": 200, 
+    "uid": 0, 
+    "url": "https://github.com/openshift/origin/releases/download/v1.5.0/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz"
+}
+2018-01-04 02:09:28,196 p=27000 u=root |  TASK [tar - unzip the oc tar] ********************************************************************************************************************************************************************
+2018-01-04 02:09:28,196 p=27000 u=root |  task path: /root/1sarvani/git-repos/ansible/osetraintsk/ose-folder-wget-tar-mv.yaml:12
+2018-01-04 02:09:28,415 p=27000 u=root |  fatal: [kucsa02-I9146]: FAILED! => {
+    "changed": false, 
+    "msg": "Could not find or access '/tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz'"
+}
+2018-01-04 02:09:28,416 p=27000 u=root |  	to retry, use: --limit @/root/1sarvani/git-repos/ansible/osetraintsk/ose-folder-wget-tar-mv.retry
+
+2018-01-04 02:09:28,417 p=27000 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 02:09:28,417 p=27000 u=root |  kucsa02-I9146              : ok=3    changed=0    unreachable=0    failed=1   
+2018-01-04 02:14:38,902 p=27429 u=root |  Using /root/1sarvani/git-repos/ansible/osetraintsk/ansible.cfg as config file
+2018-01-04 02:14:38,915 p=27429 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:14:39,179 p=27429 u=root |  PLAY [kucsa02-I9146] *****************************************************************************************************************************************************************************
+2018-01-04 02:14:39,210 p=27429 u=root |  TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+2018-01-04 02:14:40,656 p=27429 u=root |  ok: [kucsa02-I9146]
+2018-01-04 02:14:40,664 p=27429 u=root |  TASK [Create a folder in /tmp] *******************************************************************************************************************************************************************
+2018-01-04 02:14:41,303 p=27429 u=root |  ok: [kucsa02-I9146] => {"changed": false, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "/tmp/1sarvani", "secontext": "unconfined_u:object_r:user_tmp_t:s0", "size": 76, "state": "directory", "uid": 0}
+2018-01-04 02:14:41,309 p=27429 u=root |  TASK [wget the oc install] ***********************************************************************************************************************************************************************
+2018-01-04 02:15:29,805 p=27429 u=root |  ok: [kucsa02-I9146] => {"changed": false, "checksum_dest": "9d067b03a7d178fec763bec6b0aeee3a2272c67a", "checksum_src": "9d067b03a7d178fec763bec6b0aeee3a2272c67a", "dest": "/tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz", "gid": 0, "group": "root", "md5sum": "7fde24b9f6ac04e78fc13387647a611d", "mode": "0644", "msg": "OK (20930287 bytes)", "owner": "root", "secontext": "unconfined_u:object_r:user_tmp_t:s0", "size": 20930287, "src": "/tmp/tmphWISu6", "state": "file", "status_code": 200, "uid": 0, "url": "https://github.com/openshift/origin/releases/download/v1.5.0/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz"}
+2018-01-04 02:15:29,814 p=27429 u=root |  TASK [tar - unzip the oc tar] ********************************************************************************************************************************************************************
+2018-01-04 02:15:40,828 p=27429 u=root |  changed: [kucsa02-I9146] => {"changed": true, "dest": "/tmp/1sarvani", "extract_results": {"cmd": ["/usr/bin/gtar", "--extract", "-C", "/tmp/1sarvani", "-z", "-f", "/tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz"], "err": "/usr/bin/gtar: Ignoring unknown extended header keyword `LIBARCHIVE.xattr.security.selinux'\n/usr/bin/gtar: Ignoring unknown extended header keyword `LIBARCHIVE.xattr.security.selinux'\n/usr/bin/gtar: Ignoring unknown extended header keyword `LIBARCHIVE.xattr.security.selinux'\n", "out": "", "rc": 0}, "gid": 0, "group": "root", "handler": "TgzArchive", "mode": "0755", "owner": "root", "secontext": "unconfined_u:object_r:user_tmp_t:s0", "size": 4096, "src": "/tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz", "state": "directory", "uid": 0}
+2018-01-04 02:15:40,834 p=27429 u=root |  TASK [Move to usr local bin] *********************************************************************************************************************************************************************
+2018-01-04 02:15:50,551 p=27429 u=root |  changed: [kucsa02-I9146] => {"changed": true, "cmd": "cp -r /tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit/ /usr/local/bin/", "delta": "0:00:09.059013", "end": "2018-01-04 02:15:49.468963", "rc": 0, "start": "2018-01-04 02:15:40.409950", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2018-01-04 02:15:50,555 p=27429 u=root |  PLAY RECAP ***************************************************************************************************************************************************************************************
+2018-01-04 02:15:50,555 p=27429 u=root |  kucsa02-I9146              : ok=5    changed=2    unreachable=0    failed=0   
+2018-01-04 02:26:15,371 p=28312 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:26:15,385 p=28312 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 57, column 16, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      - name: Move to usr local bin
+          shell: cp -r /tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit/ /usr/local/bin/
+               ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 57, column 16
+2018-01-04 02:26:36,085 p=28343 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:26:36,203 p=28343 u=root |  ERROR! no action detected in task. This often indicates a misspelled module name, or incorrect module path.
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 40, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        when: sym.stat.islnk is not defined
+      - name: install ose when sym link is not defined
+        ^ here
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 40, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        when: sym.stat.islnk is not defined
+      - name: install ose when sym link is not defined
+        ^ here
+
+exception type: <class 'ansible.errors.AnsibleParserError'>
+exception: no action detected in task. This often indicates a misspelled module name, or incorrect module path.
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 40, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        when: sym.stat.islnk is not defined
+      - name: install ose when sym link is not defined
+        ^ here
+
+2018-01-04 02:32:38,315 p=28793 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:32:38,327 p=28793 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 43, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+        - name: Create a folder in /tmp
+        ^ here
+
+exception type: <class 'yaml.parser.ParserError'>
+exception: while parsing a block mapping
+  in "<unicode string>", line 41, column 9
+did not find expected key
+  in "<unicode string>", line 43, column 9
+2018-01-04 02:33:15,798 p=28831 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:33:15,809 p=28831 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 42, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      - name: install ose when sym link is not defined
+          name: Create a folder in /tmp
+              ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 42, column 15
+2018-01-04 02:34:24,182 p=28912 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:34:24,192 p=28912 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 42, column 8, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      #- name: install ose when sym link is not defined
+       - name: Create a folder in /tmp
+       ^ here
+
+exception type: <class 'yaml.parser.ParserError'>
+exception: while parsing a block collection
+  in "<unicode string>", line 4, column 7
+did not find expected '-' indicator
+  in "<unicode string>", line 42, column 8
+2018-01-04 02:35:57,504 p=29006 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:35:57,515 p=29006 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 42, column 8, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      - name: install ose when sym link is not defined
+       - name: Create a folder in tmp
+       ^ here
+
+exception type: <class 'yaml.parser.ParserError'>
+exception: while parsing a block collection
+  in "<unicode string>", line 4, column 7
+did not find expected '-' indicator
+  in "<unicode string>", line 42, column 8
+2018-01-04 02:36:29,212 p=29048 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:36:29,223 p=29048 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 42, column 14, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      - name: install ose when sym link is not defined
+         name: Create a folder in tmp
+             ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 42, column 14
+2018-01-04 02:37:00,720 p=29082 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:37:00,729 p=29082 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 42, column 16, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      - name: install ose when sym link is not defined
+         - name: Create a folder in tmp
+               ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 42, column 16
+2018-01-04 02:37:46,256 p=29133 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:37:46,270 p=29133 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 50, column 8, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+       - name: tar - unzip the oc tar
+       ^ here
+
+exception type: <class 'yaml.parser.ParserError'>
+exception: while parsing a block collection
+  in "<unicode string>", line 4, column 7
+did not find expected '-' indicator
+  in "<unicode string>", line 50, column 8
+2018-01-04 02:38:14,760 p=29165 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:38:14,770 p=29165 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 59, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      when: sym.stat.islink is not defined
+      ^ here
+
+exception type: <class 'yaml.parser.ParserError'>
+exception: while parsing a block collection
+  in "<unicode string>", line 4, column 7
+did not find expected '-' indicator
+  in "<unicode string>", line 59, column 7
+2018-01-04 02:38:40,003 p=29200 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:38:40,014 p=29200 u=root |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 62, column 14, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+/*
+       - name: Create a folder in /tmp
+             ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: while scanning a simple key
+  in "<unicode string>", line 61, column 1
+could not find expected ':'
+  in "<unicode string>", line 62, column 14
+2018-01-04 02:40:07,526 p=29322 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:40:07,540 p=29322 u=root |   [WARNING]: While constructing a mapping from /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml, line 41, column 9, found a duplicate dict key (name). Using last defined value only.
+
+2018-01-04 02:40:07,640 p=29322 u=root |  ERROR! conflicting action statements: unarchive, shell
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 41, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 41, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+exception type: <class 'ansible.errors.AnsibleParserError'>
+exception: conflicting action statements: unarchive, shell
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 41, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+2018-01-04 02:40:55,821 p=29382 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:40:55,833 p=29382 u=root |   [WARNING]: While constructing a mapping from /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml, line 41, column 9, found a duplicate dict key (name). Using last defined value only.
+
+2018-01-04 02:40:55,950 p=29382 u=root |  ERROR! conflicting action statements: unarchive, shell
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 41, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 41, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+exception type: <class 'ansible.errors.AnsibleParserError'>
+exception: conflicting action statements: unarchive, shell
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 41, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+2018-01-04 02:42:35,107 p=29498 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:42:35,120 p=29498 u=root |   [WARNING]: While constructing a mapping from /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml, line 42, column 9, found a duplicate dict key (name). Using last defined value only.
+
+2018-01-04 02:42:35,226 p=29498 u=root |  ERROR! conflicting action statements: unarchive, shell
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 42, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 42, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+exception type: <class 'ansible.errors.AnsibleParserError'>
+exception: conflicting action statements: unarchive, shell
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 42, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: install ose when sym link is not defined
+        ^ here
+
+2018-01-04 02:46:14,449 p=29717 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:46:14,464 p=29717 u=root |   [WARNING]: While constructing a mapping from /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml, line 53, column 9, found a duplicate dict key (name). Using last defined value only.
+
+2018-01-04 02:46:14,465 p=29717 u=root |   [WARNING]: While constructing a mapping from /root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml, line 53, column 9, found a duplicate dict key (when). Using last defined value only.
+
+2018-01-04 02:46:14,578 p=29717 u=root |  ERROR! conflicting action statements: unarchive, shell
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 53, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: tar - unzip the oc tar
+        ^ here
+
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 53, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: tar - unzip the oc tar
+        ^ here
+
+exception type: <class 'ansible.errors.AnsibleParserError'>
+exception: conflicting action statements: unarchive, shell
+
+The error appears to have been in '/root/1sarvani/git-repos/ansible/osetraintsk/osesetup.yml': line 53, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: tar - unzip the oc tar
+        ^ here
+
+2018-01-04 02:48:13,207 p=29843 u=root |   [WARNING]: Found both group and host with same name: kucsa02-I9146
+
+2018-01-04 02:48:13,374 p=29843 u=root |  playbook: osesetup.yml

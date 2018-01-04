@@ -1,0 +1,13 @@
+---
+- hosts: test
+  tasks:
+      - name: package epel-release upgrade
+        yum: name=epel-release
+      - name: Install docker
+        yum: name=docker state=present
+      - name: Copy script file
+        copy:
+           src: /root/1sarvani/git-repos/ansible/osetraintsk/oseinstall1.sh
+           dest: /root
+           owner: root
+           mode: 0744

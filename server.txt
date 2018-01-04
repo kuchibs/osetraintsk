@@ -1,11 +1,1 @@
-osetrain-i9162 interOP@I9162
-osetrain-i9163 interOP@I9163
-osetrain-i9164 interOP@I9164
-osetrain-i9165 interOP@I9165
-osetrain-i9166 interOP@I9166
-osetrain-i9167 interOP@I9167
-osetrain-i9168 interOP@I9168
-osetrain-i9169 interOP@I9169
-osetrain-i9170 interOP@I9170
-osetrain-i9171 interOP@I9171
-osetrain-i9172 interOP@I9172
+kucsa02-I9146 interOP@9146
