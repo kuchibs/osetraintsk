@@ -1,0 +1,19 @@
+---
+- hosts: kucsa02-I9146 
+  tasks: 
+   - name: Create a folder in /tmp
+     file: path=/tmp/1sarvani state=directory
+
+   - name: wget the oc install
+     get_url:
+        url: https://github.com/openshift/origin/releases/download/v1.5.0/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz
+        dest: /tmp/1sarvani
+
+   - name: tar - unzip the oc tar
+     unarchive:
+        src:  /tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz
+        dest: /tmp/1sarvani
+        remote_src: yes
+
+   - name: Move to usr local bin
+     shell: cp -r /tmp/1sarvani/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit/ /usr/local/bin/
