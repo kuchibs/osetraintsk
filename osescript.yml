@@ -2,4 +2,4 @@
 - hosts: test
   tasks:
      - name: Execute script to install oc cluster and change the working directory to scripts/ before executing the command.
-       script: oseinstall1.sh >> logfile.log
+       script: oseinstall.sh >> logfile.log

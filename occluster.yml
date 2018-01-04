@@ -1,0 +1,6 @@
+---
+- hosts: ose
+  tasks:
+     - name: oc cluster up
+       shell: oc cluster up
+     

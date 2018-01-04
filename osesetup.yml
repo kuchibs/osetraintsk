@@ -5,21 +5,33 @@
         yum: name=epel-release
       - name: Install docker
         yum: name=docker state=present
-      - name: Copy script file
-        copy:
-           src: /root/1sarvani/git-repos/ansible/osetraintsk/oseinstall1.sh
-           dest: /root
-           owner: root
-           mode: 0744
-      - name: Execute script to add INSECURE_REGISTRY to sysconfig docker file
-        script: oseinstall1.sh >> logfile.log
+     # - name: Copy script file
+     #   copy:
+     #      src: /root/1sarvani/git-repos/ansible/osetraintsk/oseinstall1.sh
+     #      dest: /root
+     #      owner: root
+     #      mode: 0744
+     # - name: Execute script to add INSECURE_REGISTRY to sysconfig docker file
+      #  script: oseinstall1.sh >> logfile.log
+      #  notify: restart docker
+
+      - name: fake task to delete
+        command: hostname
+        notify: restart docker
+
       - name: Enable and start docker
         service: enabled=true name=docker state=started
-      - name: Copy script file
-        copy:
-           src: /root/1sarvani/git-repos/ansible/osetraintsk/oseinstall.sh
-           dest: /root
-           owner: root
-           mode: 0744
-      - name: Execute script to install oc cluster and change the working directory to scripts/ before executing the command.
-        shell: oseinstall.sh >> logfile.log
+      #- name: Copy script file
+      #  copy:
+      #     src: /root/1sarvani/git-repos/ansible/osetraintsk/oseinstall.sh
+      #     dest: /root
+      #     owner: root
+      #     mode: 0744
+      #- name: Execute script to install oc cluster and change the working directory to scripts/ before executing the command.
+      #  script: oseinstall.sh >> logfile.log
+
+      - name: oc cluster up
+            script: oc cluster up
+  handlers:
+   - name: restart docker
+     service: name=docker state=restarted      #http://docs.ansible.com/ansible/latest/apache2_module_module.html
